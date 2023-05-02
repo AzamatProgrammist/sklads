@@ -22,8 +22,10 @@
 	use App\Controllers\UserController;
 	use App\Controllers\RoleController;
 	use App\Controllers\CategoryController;
+	use App\Controllers\ProductController;
 
 	$sklad = new SkladController($pdo);
 	$user = new UserController($pdo);
 	$role = new RoleController($pdo);
 	$category = new CategoryController($pdo);
+	$product = new ProductController($pdo);

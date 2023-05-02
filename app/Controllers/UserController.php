@@ -91,7 +91,19 @@
       }
     }
 
-
+    public function login($password, $email)
+    {
+      try {
+         $sql = "SELECT * FROM users WHERE password = :password AND email = :email";
+         $stmt = $this->db->prepare($sql);
+         $stmt->bindparam(':password', $password);
+         $stmt->bindparam(':email', $email);
+         $result = $stmt->execute();
+         return $result;
+      } catch (PDOException $e) {
+         echo $e->getMessage();
+      }
+    }
 
 
  }

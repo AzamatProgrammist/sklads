@@ -1,10 +1,11 @@
- 
 <?php 
   include 'config.php';
-  $products = $product->getProducts();
+  if (isset($_GET['id'])) {
+    $category_id = $_GET['id'];
+    $productCategory = $product->productCategory($category_id);
+  }
   include 'resource/layouds/header.php';
   include 'resource/layouds/sidebar.php';
-
  ?>
       <!-- Main Content -->
       <div class="main-content">
@@ -13,14 +14,7 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Products</h4>
-                    <div class="card-header-form">
-                      <form>
-                        <div class="input-group">
-                          <a href="/createProduct" class="btn btn-primary">Add</a>
-                        </div>
-                      </form>
-                    </div>
+                    <h4>Edit User</h4>
                   </div>
                   <div class="card-body p-0">
                     <div class="table-responsive">
@@ -31,7 +25,7 @@
                           <th>Count</th>
                           <th>Action</th>
                         </tr>
-                        <?php foreach ($products as $product) { ?>
+                        <?php foreach ($productCategory as $product) { ?>
                         <tr>
                           <td><?php echo $product['name']; ?></td>
                           <td><?php echo $product['price']; ?></td>
@@ -51,12 +45,12 @@
                 </div>
               </div>
             </div>
-
         </section>
-    
 <?php 
-
   include 'resource/layouds/footer.php';
-
+  
 
  ?>
+
+
+

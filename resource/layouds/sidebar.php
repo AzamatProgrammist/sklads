@@ -26,7 +26,7 @@
             <li class="menu-header">Categories product</li>
             <?php foreach ($categories as $category) { ?>
             <li class="dropdown">
-              <a href="/" class="nav-link"><i data-father="monitor"></i><span><?php echo $category['category']; ?></span></a>
+              <a href="/productCategory?id=<?php echo $category['id']; ?>" class="nav-link"><i data-father="monitor"></i><span><?php echo $category['category']; ?></span></a>
             </li>
           <?php } ?>
           </ul>

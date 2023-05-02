@@ -2,7 +2,8 @@
 <?php 
   ob_start();
   include 'config.php';
-  $roles = $role->getRoles();
+  $sklads = $sklad->getSklads();
+  $categorys = $category->getCategories();
   include 'resource/layouds/header.php';
   include 'resource/layouds/sidebar.php';
  ?>
@@ -22,18 +23,26 @@
                         <input type="text" name="name" class="form-control">
                       </div>
                       <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" name="email" class="form-control">
+                        <label>Price</label>
+                        <input type="text" name="price" class="form-control">
                       </div>
                       <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" name="password" class="form-control">
+                        <label>Count</label>
+                        <input type="text" name="count" class="form-control">
                       </div>
                       <div class="form-group">
-                        <label>Roles</label>
-                        <select name="role_id" class="form-control">
-                          <?php foreach($roles as $role) { ?>
-                          <option value="<?php echo $role['id']; ?>"><?php echo $role['role']; ?></option>
+                        <label>Select Category</label>
+                        <select name="category_id" class="form-control">
+                          <?php foreach($categorys as $category) : ?>
+                          <option value="<?php echo $category['id']; ?>"><?php echo $category['category']; ?></option>
+                          <?php endforeach ; ?>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label>Select Sklad</label>
+                        <select name="sklad_id" class="form-control">
+                          <?php foreach($sklads as $sklad) { ?>
+                          <option value="<?php echo $sklad['id']; ?>"><?php echo $sklad['name']; ?></option>
                           <?php } ?>
                         </select>
                       </div>
@@ -54,12 +63,13 @@
 
   if (isset($_POST['btn'])) {
     $name = $_POST['name'];
-    $password = md5($_POST['password']);
-    $email = $_POST['email'];
-    $role_id = $_POST['role_id'];
-    $result = $user->store($name, $password, $email, $role_id);
+    $price = $_POST['price'];
+    $count = $_POST['count'];
+    $category_id = $_POST['category_id'];
+    $sklad_id = $_POST['sklad_id'];
+    $result = $product->store($name, $price, $count, $category_id, $sklad_id);
     if ($result) {
-          header("Location: /users");
+          header("Location: /products");
           ob_end_fluch();
         }else{
           echo "Xatolik";
