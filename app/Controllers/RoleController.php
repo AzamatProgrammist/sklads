@@ -17,7 +17,8 @@
     public function getRoles()
     {
         $sql = "SELECT * FROM roles";
-        $result = $this->db->query($sql);
+        $stmt = $this->db->query($sql);
+        $result = $stmt->fetchALL();
         return $result;
     }
 

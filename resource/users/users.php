@@ -33,18 +33,16 @@
                           <th>Role</th>
                           <th>Action</th>
                         </tr>
-                        <?php foreach ($users as $user) : ?>
+                        <?php foreach ($users as $user) { ?>
                         <tr>
                           <td><?php echo $user['name']; ?></td>
                           <td><?php echo $user['email']; ?></td>
                           <td>
-                            <?php foreach($roles as $role) : ?>
-
-                              <?php if ($user['role_id'] == $role['id']) {
-                                echo $role['role'];
-                              } ?>
-                              
-                            <?php endforeach; ?>
+                            <?php foreach($roles as $rol) { ?>
+                              <?php if ($user['role_id'] == $rol['id']) {
+                                echo $rol['role'];
+                              } ?>                              
+                            <?php } ?>
                           </td>
                           <td>
                             <?php foreach($_SESSION['roles'] as $role) { ?>
@@ -58,7 +56,7 @@
                           <?php } ?>
                           </td>
                         </tr>
-                        <?php endforeach ; ?>
+                        <?php } ?>
                       </table>
                     </div>
                   </div>
