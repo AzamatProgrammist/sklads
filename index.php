@@ -52,5 +52,3 @@ $routes = [
 		require $routes[$uri];
 	}
 
-
-

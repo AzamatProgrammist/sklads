@@ -89,10 +89,13 @@ if (isset($_POST['btn'])) {
   $email = $_POST['email'];
   $result = $user->login($password, $email);
   if ($result) {
+
     $_SESSION['password'] = $password;
     $_SESSION['email'] = $email;
+    $_SESSION['roles'] = $result;
     header("Location: /");
     ob_end_flush();
+  
   }else{
     $_SESSION['error'] = "Email yoki parolni xato kiritdingiz!";
     header("Location: /login");

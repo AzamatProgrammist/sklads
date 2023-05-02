@@ -33,11 +33,15 @@
                         <tr>
                           <td><?php echo $key['name']; ?></td>
                           <td>
+                            <?php foreach($_SESSION['roles'] as $role) { ?>
+                              <?php if ($role['role_id'] == 1) { ?>
                             <a href="/editSklad?id=<?php echo $key['id']; ?>" class="btn btn-primary">Edit</a>
                             <form method="POST" action="/deleteSklad">
                               <input type="hidden" name="id" value="<?php echo $key['id']; ?>">
                               <button class="btn btn-icon btn-danger" onclick="return confirm('Confirm <?php echo $key['name']; ?> delete')" type="submit" name="delete"><i class="fas fa-times"></i></button>
                             </form>
+                          <?php } ?>
+                          <?php } ?>
                           </td>
                         </tr>
                         <?php endforeach; ?>

@@ -59,7 +59,7 @@
 
     }
 
-    public function update($id, $name, $email, $password, $role_id)
+    public function update($id, $name, $password, $email, $role_id)
     {
     	try {
 	    	$sql = "UPDATE `users` SET name = :name, password = :password, email = :email, role_id = :role_id WHERE id = :id";
@@ -98,7 +98,8 @@
          $stmt = $this->db->prepare($sql);
          $stmt->bindparam(':password', $password);
          $stmt->bindparam(':email', $email);
-         $result = $stmt->execute();
+         $stmt->execute();
+         $result = $stmt->fetchAll();
          return $result;
       } catch (PDOException $e) {
          echo $e->getMessage();

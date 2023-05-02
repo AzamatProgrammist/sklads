@@ -93,7 +93,6 @@ if (isset($_POST['btn'])) {
   $email = $_POST['email'];
   $role_id = 2;
   $result = $user->store($name, $password, $email, $role_id);
-
   if ($result) {
           $_SESSION['password'] = $password;
           $_SESSION['email'] = $email;
